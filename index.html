@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+        .container {
+            width: 500px;
+            margin: 30px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 20px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"] {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"] { background-color: #28a745; color: white; }
+        input[type="reset"] { background-color: #ffc107; color: white; }
+        input[type="button"] { background-color: #007bff; color: white; }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>User Registration</h2>
+    <form name="myForm" action="pro.php" onsubmit="return checkPasswords();">
+        Last and First name:
+        <input type="text" name="fullname" required>
+
+        Password:
+        <input type="password" name="password" required>
+
+        Confirm Password:
+        <input type="password" name="confirm_password" required>
+
+        Age:
+        <input type="number" name="age" required>
+
+        Gender:
+        <br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+
+        <br><br>
+        Proficiency language:
+        <br>
+        <input type="checkbox" name="language" value="borsa3ede"> Borsa3ede
+        <input type="checkbox" name="language" value="monofe"> Monofe
+        <input type="checkbox" name="language" value="almani"> Almani
+        <input type="checkbox" name="language" value="5awaga"> 5awaga
+        <input type="checkbox" name="language" value="se3ede"> Se3ede
+        <input type="checkbox" name="language" value="faransawi"> Faransawi
+
+        <br><br>
+        <input type="submit" value="Save">
+        <input type="reset" value="New">
+    </form>
+
+    <br>
+    <input type="button" onclick="student()" value="Click Here For Creator Instagram">
+    <br><br>
+    <a href="forgot_password.html">Forgot your password?</a>
+</div>
+
+<script>
+    function student() {
+        window.location.href = "https://www.instagram.com/selimomarrsalahh_?igsh=bDE4a2phMTd0YmQ4";
+    }
+
+    function checkPasswords() {
+        var pwd = document.myForm.password.value;
+        var cpwd = document.myForm.confirm_password.value;
+
+        if (pwd === "") {
+            alert("Please enter your password.");
+            return false;
+        }
+
+        if (pwd.length < 16) {
+            alert("Password must be at least 16 characters long.");
+            return false;
+        }
+
+        if (!/[A-Z]/.test(pwd) || !/\d/.test(pwd)) {
+            alert("Password must include at least one uppercase letter and one number.");
+            return false;
+        }
+
+        if (pwd !== cpwd) {
+            alert("Passwords do not match!");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
