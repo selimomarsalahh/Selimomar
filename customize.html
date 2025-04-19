@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customize Your Theme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .options {
+            background: #f9f9f9;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.1" />
+</head>
+<body>
+    <h1>🎨 Customize Your Page</h1>
+    <div class="options">
+        <label>Choose Background Color:</label><br>
+        <select id="bgColor">
+            <option value="#ffffff">White</option>
+            <option value="#fdf6e3">Light Cream</option>
+            <option value="#e0f7fa">Light Blue</option>
+            <option value="#fce4ec">Pink</option>
+            <option value="#e8f5e9">Light Green</option>
+        </select><br>
+
+        <label>Choose Font Style:</label><br>
+        <select id="fontStyle">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Georgia">Georgia</option>
+        </select><br>
+
+        <button onclick="applyTheme()">Apply</button>
+        <button onclick="goToGame()">Next</button>
+        <button onclick="goBack()">Back To Previous Page</button>
+    </div>
+
+    <script>
+        function applyTheme() {
+            const bgColor = document.getElementById("bgColor").value;
+            const font = document.getElementById("fontStyle").value;
+
+            document.body.style.backgroundColor = bgColor;
+            document.body.style.fontFamily = font;
+        }
+
+        function goBack() {
+            window.location.href = "summary.html";
+        }
+
+        function goToGame() {
+            window.location.href = "thankyou.html";
+        }
+    </script>
+</body>
+</html>

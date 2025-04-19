@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Form Example</title>
+    <title>Login Form/By: Selim Omar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f2f2f2;
         }
+
         .container {
             width: 500px;
             margin: 30px auto;
@@ -17,6 +18,7 @@
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
             text-align: left;
         }
+
         input[type="text"],
         input[type="password"],
         input[type="number"],
@@ -26,6 +28,7 @@
             margin: 8px 0 20px 0;
             box-sizing: border-box;
         }
+
         input[type="submit"],
         input[type="reset"],
         input[type="button"] {
@@ -35,97 +38,215 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        input[type="submit"] { background-color: #28a745; color: white; }
-        input[type="reset"] { background-color: #ffc107; color: white; }
-        input[type="button"] { background-color: #007bff; color: white; }
+
+        input[type="submit"] {
+            background-color: #000000;
+            color: white;
+        }
+
+        input[type="button"] {
+            background-color: #000000;
+            color: white;
+        }
+
+        input[type="reset"] {
+            background-color: #000000;
+            color: white;
+        }
+
         a {
             text-decoration: none;
             color: #007bff;
         }
+
+        .socials {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+            .socials a img {
+                width: 15px;
+                height: 15px;
+            }
+
+        .show-password {
+            margin-bottom: 15px;
+        }
+
+        .alert-box {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffefc0;
+            color: #333;
+            padding: 30px;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+        }
+
+            .alert-box button {
+                margin-top: 15px;
+                padding: 8px 16px;
+                background: #ffc107;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+            }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 <body>
 
-<div class="container">
-    <h2>User Registration</h2>
-    <form name="myForm" action="pro.php" onsubmit="return checkPasswords();">
-        Last and First name:
-        <input type="text" name="fullname" required>
+    <!-- Custom Alert Box -->
+    <div id="customAlert" class="alert-box">
+        <p id="alertText">This is an alert message!</p>
+        <button onclick="closeAlert()">OK</button>
+    </div>
 
-        Password:
-        <input type="password" name="password" required>
+    <!-- Registration Form -->
+    <div class="container">
+        <h2>User Registration</h2>
+        <form name="myForm" onsubmit="return handleFormSubmit();">
+            First and Last name:
+            <input type="text" name="fullname" required>
 
-        Confirm Password:
-        <input type="password" name="confirm_password" required>
+            Password:
+            <input type="password" id="password" name="password" required>
 
-        Age:
-        <input type="number" name="age" required>
+            Confirm Password:
+            <input type="password" id="confirm_password" name="confirm_password" required>
 
-        Gender:
+            <div class="show-password">
+                <input type="checkbox" id="showPwd" onclick="togglePasswordVisibility()"> Show Password
+            </div>
+
+            Age:
+            <input type="number" name="age" required>
+
+            Gender:
+            <br>
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Prefer Not To Say"> Prefer Not To Say
+
+            <br><br>
+            Proficiency language:
+            <br>
+            <input type="checkbox" name="language" value="Arabic"> Arabic
+            <input type="checkbox" name="language" value="German"> German
+            <input type="checkbox" name="language" value="English"> English
+            <input type="checkbox" name="language" value="Italian"> Italian
+            <input type="checkbox" name="language" value="Spanish"> Spanish
+            <input type="checkbox" name="language" value="French"> French
+
+            <br><br>
+            <input type="submit" value="Next">
+            <input type="reset" value="Reset">
+            <input type="button" value="New" onclick="rickrollUser()">
+        </form>
+
+        <!-- Social Media Links -->
+        <p>
+            <a href="https://www.instagram.com/selimomarrsalahh_?igsh=bDE4a2phMTd0YmQ4" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="20">
+                Follow For More
+            </a>
+        </p>
+
+        <p>
+            <a href="https://wa.me/+201028570060" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
+                Chat on WhatsApp
+            </a>
+        </p>
+
+        <p><a href="game.html" target="_blank">🎮 Play My Game!</a></p>
+        <p><a href="music.html" target="_blank">🎧 Mahraganat.com</a></p>
+        <p><a href="about.html">👨‍💼 About Me</a></p>
         <br>
-        <input type="radio" name="gender" value="Male"> Male
-        <input type="radio" name="gender" value="Female"> Female
+        <a href="forgot_password.html">Forgot your password?</a>
+    </div>
 
-        <br><br>
-        Proficiency language:
-        <br>
-        <input type="checkbox" name="language" value="borsa3ede"> Borsa3ede
-        <input type="checkbox" name="language" value="monofe"> Monofe
-        <input type="checkbox" name="language" value="almani"> Almani
-        <input type="checkbox" name="language" value="5awaga"> 5awaga
-        <input type="checkbox" name="language" value="se3ede"> Se3ede
-        <input type="checkbox" name="language" value="faransawi"> Faransawi
-
-        <br><br>
-        <input type="submit" value="Save">
-        <input type="reset" value="New">
-    </form>
-
-    <br>
-    <input type="button" onclick="student()" value="Click Here For A Small Game">
-    <p>
-    <a href="https://www.instagram.com/selimomarrsalahh_?igsh=bDE4a2phMTd0YmQ4" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30">
-        Follow me on Instagram
-    </a>
-</p>
-
-    <br><br>
-    <a href="forgot_password.html">Forgot your password?</a>
-</div>
-
-<script>
-    function student() {
-        window.location.href = "guessing_game";
-    }
-
-    function checkPasswords() {
-        var pwd = document.myForm.password.value;
-        var cpwd = document.myForm.confirm_password.value;
-
-        if (pwd === "") {
-            alert("Please enter your password.");
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        function handleFormSubmit() {
+            if (!checkPasswords()) return false;
+            saveData();
             return false;
         }
 
-        if (pwd.length < 16) {
-            alert("Password must be at least 16 characters long.");
-            return false;
+        function checkPasswords() {
+            const pwd = document.myForm.password.value;
+            const cpwd = document.myForm.confirm_password.value;
+
+            if (pwd === "") {
+                showAlert("⚠️ Please enter your password.");
+                return false;
+            }
+            if (pwd.length < 8) {
+                showAlert("❗ Password must be at least 8 characters long.");
+                return false;
+            }
+            if (!/[A-Z]/.test(pwd) || !/\d/.test(pwd) || !/[!@#$%^&*(),.?\":{}|<>]/.test(pwd)) {
+                showAlert("🚫 Password must include an uppercase letter, number, and special character.");
+                return false;
+            }
+            if (pwd !== cpwd) {
+                showAlert("❌ Passwords do not match!");
+                return false;
+            }
+            return true;
         }
 
-        if (!/[A-Z]/.test(pwd) || !/\d/.test(pwd)) {
-            alert("Password must include at least one uppercase letter and one number.");
-            return false;
+        function saveData() {
+            localStorage.setItem("fullname", document.myForm.fullname.value);
+            localStorage.setItem("age", document.myForm.age.value);
+            const gender = document.querySelector('input[name="gender"]:checked');
+            localStorage.setItem("gender", gender ? gender.value : "");
+            const langs = Array.from(document.querySelectorAll('input[name="language"]:checked')).map(cb => cb.value);
+            localStorage.setItem("languages", langs.join(", "));
+            window.location.href = 'summary.html';
         }
 
-        if (pwd !== cpwd) {
-            alert("Passwords do not match!");
-            return false;
+        function rickrollUser() {
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+            setTimeout(() => {
+                document.myForm.reset();
+            }, 500);
         }
 
-        return true;
-    }
-</script>
+        function showAlert(message) {
+            const alertBox = document.getElementById("customAlert");
+            const alertText = document.getElementById("alertText");
+
+            alertText.textContent = message;
+            alertBox.style.display = "block";
+
+            setTimeout(() => {
+                closeAlert();
+            }, 3000);
+        }
+
+        function closeAlert() {
+            document.getElementById("customAlert").style.display = "none";
+        }
+
+        function togglePasswordVisibility() {
+            const pwd = document.getElementById("password");
+            const cpwd = document.getElementById("confirm_password");
+            const type = pwd.type === "password" ? "text" : "password";
+            pwd.type = type;
+            cpwd.type = type;
+        }
+    </script>
 
 </body>
 </html>
